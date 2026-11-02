@@ -31,6 +31,7 @@ nav a[aria-current=page]{color:var(--acc);font-weight:600}
 .btn{background:var(--acc);color:var(--onacc);border:0;border-radius:50px;padding:10px 22px;font-weight:600;display:inline-block}
 .btn.sm{padding:6px 16px;font-size:14px}
 .btn.ghost{background:none;color:var(--ink);border:2px solid var(--line)}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
 
 section{padding:50px 0}
 .hero{display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center;min-height:70vh}
@@ -42,9 +43,15 @@ section{padding:50px 0}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;display:grid;gap:6px;transition:transform .2s}
 .card:hover{transform:translateY(-4px)}
+.card.out .ph{opacity:.45}
 .ph{background:var(--bg);border-radius:12px;display:grid;place-items:center;font-size:56px;height:120px}
 .card h3{font-size:16px}
-.row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:6px}
+.row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-top:6px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;min-height:26px}
+.tag{display:inline-block;font-size:12px;padding:2px 10px;border-radius:50px;font-weight:600}
+.tag.off{background:var(--acc);color:var(--onacc)}
+.tag.out{background:#5d6770;color:#fff}
+.tag.low{background:#f2b84b;color:#17202a}
 .tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
 .tools input{flex:1;min-width:180px;padding:10px 16px;border-radius:50px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
 .chip{background:none;border:1px solid var(--line);color:var(--ink);border-radius:50px;padding:6px 16px}
@@ -60,7 +67,8 @@ dt{font-weight:600}
 .sw{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 20px}
 .sw button{width:42px;height:42px;border-radius:50%;border:3px solid var(--line)}
 .sw button[aria-pressed=true]{border-color:var(--acc);outline:2px solid var(--acc);outline-offset:2px}
-.price{font-size:22px;font-weight:600;color:var(--acc);margin:6px 0 14px}
+.price{font-size:22px;font-weight:600;color:var(--acc);margin:6px 0 8px}
+.price s{font-size:16px;font-weight:400}
 .specs{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:20px}
 .specs dl{margin:0;max-width:none}
 
@@ -69,6 +77,7 @@ dt{font-weight:600}
 .cart.open{transform:none}
 .ci{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
 .q button{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--ink)}
+.q button:disabled{opacity:.35;cursor:not-allowed}
 .cart input,.cart textarea{width:100%;margin-top:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
 #st{min-height:26px;margin-top:8px;font-size:14px}
 .err{color:#d6336c}
@@ -104,7 +113,7 @@ nav{order:3;width:100%;justify-content:space-around}
   <section data-page="home" class="hero">
     <div>
       <h1>لوازمی که سال‌ها کنار شما می‌ماند</h1>
-      <p class="mute">یخچال، لباسشویی، ظرفشویی و لوازم آشپزخانه با ضمانت و مشاوره‌ی صادقانه. رنگ و مشخصات را ببینید، سفارش را در پیام‌رسان بفرستید، ما تماس می‌گیریم.</p>
+      <p class="mute">یخچال، لباسشویی، ظرفشویی و لوازم آشپزخانه با ضمانت و مشاوره‌ی صادقانه. رنگ، مشخصات و موجودی را ببینید، سفارش را در تلگرام بفرستید، ما تماس می‌گیریم.</p>
       <a class="btn" href="#products">دیدن محصولات</a>
       <a class="btn ghost" href="#contact">تماس با ما</a>
     </div>
@@ -153,12 +162,12 @@ nav{order:3;width:100%;justify-content:space-around}
       <dt>ساعت کاری</dt><dd>شنبه تا پنجشنبه، ۹ تا ۲۱</dd>
     </dl>
     <a class="btn" id="mapLink" target="_blank" rel="noopener">مسیریابی روی نقشه</a>
-    <a class="btn ghost" id="chatLink" target="_blank" rel="noopener">گفت‌وگو در پیام‌رسان</a>
+    <a class="btn ghost" id="chatLink" target="_blank" rel="noopener">گفت‌وگو در تلگرام</a>
   </section>
 
 </main>
 
-<footer>© فروشگاه لوازم خانگی (نمونه‌کار) · قیمت‌ها، مشخصات و نظرها نمونه‌اند</footer>
+<footer>© فروشگاه لوازم خانگی (نمونه‌کار) · قیمت‌ها، مشخصات، موجودی و نظرها نمونه‌اند</footer>
 
 <div class="scrim" id="scrim" hidden></div>
 <aside class="cart" id="cart" aria-label="سبد خرید">
@@ -168,7 +177,7 @@ nav{order:3;width:100%;justify-content:space-around}
   <form id="order" novalidate>
     <input id="oname" placeholder="نام شما" autocomplete="name">
     <input id="otel" type="tel" inputmode="numeric" placeholder="شماره‌ی موبایل">
-    <button class="btn" style="width:100%;margin-top:10px" type="submit">ارسال سفارش به پیام‌رسان</button>
+    <button class="btn" style="width:100%;margin-top:10px" type="submit">ارسال سفارش به تلگرام</button>
     <p id="st" role="status" aria-live="polite"></p>
     <textarea id="otext" rows="6" readonly hidden></textarea>
   </form>
@@ -178,30 +187,31 @@ nav{order:3;width:100%;justify-content:space-around}
   // تنظیمات فروشگاه: این‌ها را با اطلاعات واقعی عوض کنید
   const SHOP = {
     phone: '۰۹۱۲۰۰۰۰۰۰۰',
-    chat: 'https://eitaa.com/USERNAME',
+    chat: 'https://t.me/lavazem_demo',
     map: 'https://maps.google.com/?q=نشانی+فروشگاه'
   };
 
   // رنگ‌ها
   const W = {n:'سفید',h:'#f1f1f1'}, S = {n:'نقره‌ای',h:'#b8bec4'}, K = {n:'مشکی',h:'#2a2a2a'};
 
-  // محصولات (مشخصات و رنگ‌ها نمونه‌اند؛ با اطلاعات واقعی عوض کنید)
+  // محصولات (قیمت، موجودی، مشخصات و رنگ‌ها نمونه‌اند؛ با اطلاعات واقعی عوض کنید)
+  // stock: تعداد موجود (۰ یعنی ناموجود) | old: قیمت قبل از تخفیف (اختیاری)
   const P = [
-    {id:1,n:'یخچال ساید بای ساید',c:'fridge',p:48000000,i:'🧊',d:'ظرفیت ۷۰۰ لیتر',colors:[W,S,K],
+    {id:1,n:'یخچال ساید بای ساید',c:'fridge',p:48000000,stock:5,i:'🧊',d:'ظرفیت ۷۰۰ لیتر',colors:[W,S,K],
      s:[['ظرفیت','۷۰۰ لیتر'],['ابعاد','۹۱ × ۷۰ × ۱۷۸ سانتی‌متر'],['مصرف انرژی','رده‌ی A+'],['سیستم سرمایش','بدون برف‌ساز'],['گارانتی','۱۸ ماه']]},
-    {id:2,n:'فریزر صندوقی',c:'fridge',p:22000000,i:'❄️',d:'ظرفیت ۳۰۰ لیتر',colors:[W,S],
+    {id:2,n:'فریزر صندوقی',c:'fridge',p:22000000,stock:12,i:'❄️',d:'ظرفیت ۳۰۰ لیتر',colors:[W,S],
      s:[['ظرفیت','۳۰۰ لیتر'],['ابعاد','۱۰۵ × ۶۵ × ۸۵ سانتی‌متر'],['کنترل دما','مکانیکی'],['گارانتی','۱۸ ماه']]},
-    {id:3,n:'لباسشویی ۹ کیلویی',c:'wash',p:25000000,i:'🧺',d:'دور ۱۴۰۰، کم‌مصرف',colors:[W,S,K],
+    {id:3,n:'لباسشویی ۹ کیلویی',c:'wash',p:25000000,stock:8,i:'🧺',d:'دور ۱۴۰۰، کم‌مصرف',colors:[W,S,K],
      s:[['ظرفیت','۹ کیلوگرم'],['دور مرکزی','۱۴۰۰ دور در دقیقه'],['مصرف انرژی','رده‌ی A++'],['ابعاد','۶۰ × ۵۵ × ۸۵ سانتی‌متر'],['گارانتی','۱۸ ماه']]},
-    {id:4,n:'ظرفشویی ۱۴ نفره',c:'wash',p:32000000,i:'🍽️',d:'۸ برنامه‌ی شست‌وشو',colors:[W,S,K],
+    {id:4,n:'ظرفشویی ۱۴ نفره',c:'wash',p:32000000,old:36000000,stock:3,i:'🍽️',d:'۸ برنامه‌ی شست‌وشو',colors:[W,S,K],
      s:[['ظرفیت','۱۴ نفر'],['برنامه‌ی شست‌وشو','۸ برنامه'],['ابعاد','۶۰ × ۶۰ × ۸۵ سانتی‌متر'],['مصرف انرژی','رده‌ی A+'],['گارانتی','۱۸ ماه']]},
-    {id:5,n:'ماکروفر ۳۰ لیتری',c:'kitchen',p:9500000,i:'📡',d:'گریل و دیجیتال',colors:[K,S,W],
+    {id:5,n:'ماکروفر ۳۰ لیتری',c:'kitchen',p:9500000,stock:15,i:'📡',d:'گریل و دیجیتال',colors:[K,S,W],
      s:[['ظرفیت','۳۰ لیتر'],['توان','۹۰۰ وات'],['گریل','دارد'],['کنترل','دیجیتال'],['گارانتی','۱۲ ماه']]},
-    {id:6,n:'سرخ‌کن بدون روغن',c:'kitchen',p:6800000,i:'🍟',d:'ظرفیت ۵ لیتر',colors:[K,{n:'قرمز',h:'#c0392b'},W],
+    {id:6,n:'سرخ‌کن بدون روغن',c:'kitchen',p:6800000,stock:20,i:'🍟',d:'ظرفیت ۵ لیتر',colors:[K,{n:'قرمز',h:'#c0392b'},W],
      s:[['ظرفیت','۵ لیتر'],['توان','۱۵۰۰ وات'],['دمای کار','۸۰ تا ۲۰۰ درجه'],['تایمر','تا ۶۰ دقیقه'],['گارانتی','۱۲ ماه']]},
-    {id:7,n:'جاروبرقی ۲۲۰۰ وات',c:'clean',p:8900000,i:'🌀',d:'فیلتر هپا',colors:[{n:'قرمز',h:'#c0392b'},{n:'آبی',h:'#2f6fb0'},K],
+    {id:7,n:'جاروبرقی ۲۲۰۰ وات',c:'clean',p:8900000,stock:6,i:'🌀',d:'فیلتر هپا',colors:[{n:'قرمز',h:'#c0392b'},{n:'آبی',h:'#2f6fb0'},K],
      s:[['توان','۲۲۰۰ وات'],['فیلتر','هپا'],['حجم مخزن','۳ لیتر'],['طول کابل','۶ متر'],['گارانتی','۱۲ ماه']]},
-    {id:8,n:'جاروشارژی',c:'clean',p:12500000,i:'🔋',d:'۶۰ دقیقه کار',colors:[{n:'خاکستری',h:'#7d8790'},{n:'طلایی',h:'#c9a24a'}],
+    {id:8,n:'جاروشارژی',c:'clean',p:12500000,stock:0,i:'🔋',d:'۶۰ دقیقه کار',colors:[{n:'خاکستری',h:'#7d8790'},{n:'طلایی',h:'#c9a24a'}],
      s:[['زمان کار','۶۰ دقیقه'],['زمان شارژ','۴ ساعت'],['وزن','۲ کیلوگرم'],['فیلتر','هپا'],['گارانتی','۱۲ ماه']]}
   ];
   const CATS = {all:'همه',fridge:'یخچال و فریزر',wash:'شست‌وشو',kitchen:'آشپزخانه',clean:'نظافت'};
@@ -228,8 +238,29 @@ nav{order:3;width:100%;justify-content:space-around}
   }
   window.addEventListener('hashchange', route);
 
+  /* ---------- برچسب‌ها و قیمت ---------- */
+  function tags(p) {
+    const t = [];
+    if (p.stock === 0) {
+      t.push('<span class="tag out">ناموجود</span>');
+    } else {
+      if (p.old) t.push('<span class="tag off">' + fa(Math.round((1 - p.p / p.old) * 100)) + '٪ تخفیف</span>');
+      if (p.stock <= 3) t.push('<span class="tag low">فقط ' + fa(p.stock) + ' عدد مانده</span>');
+    }
+    return t.join('');
+  }
+  function priceHtml(p) {
+    return (p.old && p.stock > 0 ? '<s class="mute">' + fa(p.old) + '</s> ' : '') + '<b>' + fa(p.p) + ' تومان</b>';
+  }
+
   /* ---------- محصولات، جستجو و فیلتر ---------- */
-  const card = p => `<article class="card"><a class="ph" href="#product-${p.id}" aria-hidden="true" tabindex="-1">${p.i}</a><h3><a href="#product-${p.id}">${p.n}</a></h3><p class="mute">${p.d}</p><div class="row"><b>${fa(p.p)} تومان</b><a class="btn sm" href="#product-${p.id}">مشخصات و خرید</a></div></article>`;
+  const card = p => `<article class="card${p.stock === 0 ? ' out' : ''}">
+    <a class="ph" href="#product-${p.id}" aria-hidden="true" tabindex="-1">${p.i}</a>
+    <div class="tags">${tags(p)}</div>
+    <h3><a href="#product-${p.id}">${p.n}</a></h3>
+    <p class="mute">${p.d}</p>
+    <div class="row"><span>${priceHtml(p)}</span><a class="btn sm${p.stock === 0 ? ' ghost' : ''}" href="#product-${p.id}">${p.stock === 0 ? 'مشخصات' : 'مشخصات و خرید'}</a></div>
+  </article>`;
   let cat = 'all';
   function renderList() {
     const q = $('#q').value.trim().toLowerCase();
@@ -260,18 +291,24 @@ nav{order:3;width:100%;justify-content:space-around}
     const box = $('#pdetail');
     if (!p) { box.innerHTML = '<p class="mute">محصول پیدا نشد.</p>'; return; }
     curP = p;
+    const stockTxt = p.stock === 0 ? 'این محصول فعلاً ناموجود است.' : 'موجودی: ' + fa(p.stock) + ' عدد';
+    const btn = p.stock > 0
+      ? '<button class="btn" data-addp="' + p.id + '">افزودن به سبد خرید</button>'
+      : '<button class="btn" disabled>ناموجود</button>';
     box.innerHTML = `<div class="pd">
       <div class="pimg" id="pimg" aria-hidden="true">${p.i}</div>
       <div>
         <h2>${p.n}</h2>
         <p class="mute">${p.d}</p>
-        <div class="price">${fa(p.p)} تومان</div>
+        <div class="price">${priceHtml(p)}</div>
+        <div class="tags" style="margin-bottom:6px">${tags(p)}</div>
+        <p class="mute" style="margin-bottom:10px">${stockTxt}</p>
         <p><b>رنگ:</b> <span id="cname"></span></p>
         <div class="sw">${p.colors.map((c,k) => `<button data-color="${k}" aria-label="رنگ ${c.n}" aria-pressed="false" style="background:${c.h}"></button>`).join('')}</div>
         <div class="specs"><b>مشخصات <small class="mute">(نمونه)</small></b>
           <dl style="margin-top:8px">${p.s.map(r => `<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join('')}</dl>
         </div>
-        <button class="btn" data-addp="${p.id}">افزودن به سبد خرید</button>
+        ${btn}
       </div>
     </div>`;
     pickColor(0);
@@ -282,36 +319,44 @@ nav{order:3;width:100%;justify-content:space-around}
   let cart = load();
   const save = () => { try { localStorage.setItem('cart', JSON.stringify(cart)); } catch (e) {} };
 
+  // مجموع تعداد یک محصول در همه‌ی رنگ‌ها (برای رعایت سقف موجودی)
+  const qtyOf = id => Object.entries(cart).filter(([k]) => k.split('|')[0] == id).reduce((s,[,q]) => s + q, 0);
+
   function lines() {
     return Object.entries(cart).map(([key,q]) => {
       const [id, color = ''] = key.split('|');
       return {key, p: P.find(x => x.id == id), color, q};
-    }).filter(x => x.p);
+    }).filter(x => x.p && x.p.stock > 0);
   }
   function renderCart() {
     const ls = lines();
     const total = ls.reduce((s,l) => s + l.p.p * l.q, 0);
     $('#count').textContent = fa(ls.reduce((s,l) => s + l.q, 0));
     $('#total').textContent = fa(total) + ' تومان';
-    $('#items').innerHTML = ls.length ? ls.map(l => `<div class="ci"><span>${l.p.n}${l.color ? ' — ' + l.color : ''}<br><small class="mute">${fa(l.p.p)} تومان</small></span><span class="q"><button data-dec="${l.key}" aria-label="کم کردن">−</button> ${fa(l.q)} <button data-inc="${l.key}" aria-label="زیاد کردن">+</button></span></div>`).join('') : '<p class="mute" style="padding:12px 0">سبد خالی است.</p>';
+    $('#items').innerHTML = ls.length ? ls.map(l => `<div class="ci"><span>${l.p.n}${l.color ? ' — ' + l.color : ''}<br><small class="mute">${fa(l.p.p)} تومان</small></span><span class="q"><button data-dec="${l.key}" aria-label="کم کردن">−</button> ${fa(l.q)} <button data-inc="${l.key}" aria-label="زیاد کردن"${qtyOf(l.p.id) >= l.p.stock ? ' disabled' : ''}>+</button></span></div>`).join('') : '<p class="mute" style="padding:12px 0">سبد خالی است.</p>';
   }
   function setQty(key, d) {
+    const id = key.split('|')[0];
+    const pr = P.find(x => x.id == id);
+    if (!pr) return false;
+    if (d > 0 && qtyOf(id) >= pr.stock) return false;
     cart[key] = (cart[key] || 0) + d;
     if (cart[key] <= 0) delete cart[key];
     save(); renderCart();
+    return true;
   }
   document.addEventListener('click', e => {
     const sw = e.target.closest('[data-color]');
     if (sw) return pickColor(Number(sw.dataset.color));
     const a = e.target.closest('[data-addp]');
     if (a) {
-      setQty(curP.id + '|' + curP.colors[selColor].n, 1);
-      a.textContent = 'اضافه شد ✓';
-      setTimeout(() => a.textContent = 'افزودن به سبد خرید', 900);
+      const ok = setQty(curP.id + '|' + curP.colors[selColor].n, 1);
+      a.textContent = ok ? 'اضافه شد ✓' : 'به سقف موجودی رسیدید';
+      setTimeout(() => a.textContent = 'افزودن به سبد خرید', 1200);
       return;
     }
-    const i = e.target.closest('[data-inc]'); if (i) return setQty(i.dataset.inc, 1);
-    const d = e.target.closest('[data-dec]'); if (d) return setQty(d.dataset.dec, -1);
+    const i = e.target.closest('[data-inc]'); if (i) { setQty(i.dataset.inc, 1); return; }
+    const d = e.target.closest('[data-dec]'); if (d) { setQty(d.dataset.dec, -1); return; }
   });
   const openCart = o => { $('#cart').classList.toggle('open', o); $('#scrim').hidden = !o; };
   $('#cartBtn').onclick = () => openCart(true);
@@ -333,7 +378,7 @@ nav{order:3;width:100%;justify-content:space-around}
     if (navigator.clipboard) navigator.clipboard.writeText(text).catch(() => {});
     $('#otext').value = text; $('#otext').hidden = false;
     window.open(SHOP.chat, '_blank');
-    say('متن سفارش کپی شد. در چت باز شده آن را بچسبانید و ارسال کنید. اگر کپی نشد، متن زیر را بفرستید.');
+    say('متن سفارش کپی شد. در چت تلگرام که باز شد آن را بچسبانید و ارسال کنید. اگر کپی نشد، متن زیر را بفرستید.');
   });
 
   /* ---------- حالت تاریک و روشن ---------- */
@@ -351,4 +396,4 @@ nav{order:3;width:100%;justify-content:space-around}
 </script>
 
 </body>
-                           </html>
+</html>
