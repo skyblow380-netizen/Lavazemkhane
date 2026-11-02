@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>خانه‌ساز | فروشگاه لوازم خانگی</title>
+<meta name="description" content="فروشگاه لوازم خانگی خانه‌ساز؛ یخچال، لباسشویی، ظرفشویی و لوازم آشپزخانه با ثبت سفارش ساده">
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f5f1;--card:#fff;--ink:#17202a;--mute:#5d6770;--acc:#c8430f;--onacc:#fff;--line:#e2dfd8}
+[data-theme=dark]{--bg:#11161c;--card:#1a222b;--ink:#eef1f4;--mute:#9aa7b3;--acc:#ff7a3d;--onacc:#11161c;--line:#2a3541}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Vazirmatn,Tahoma,sans-serif;background:var(--bg);color:var(--ink);line-height:1.8}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.wrap{max-width:1040px;margin:auto;padding:0 18px}
+h1,h2{font-family:Lalezar,Vazirmatn,sans-serif;font-weight:400;line-height:1.3}
+h2{font-size:clamp(26px,5vw,38px);margin-bottom:14px}
+.mute{color:var(--mute)}
+[hidden]{display:none!important}
+
+.top{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;flex-wrap:wrap;gap:10px;min-height:60px;padding-block:6px}
+.logo{font-family:Lalezar,sans-serif;font-size:26px;color:var(--acc);margin-inline-end:auto}
+nav{display:flex;gap:16px;font-size:15px}
+nav a[aria-current=page]{color:var(--acc);font-weight:600}
+.ib{background:none;border:1px solid var(--line);color:var(--ink);border-radius:50px;padding:4px 14px}
+.btn{background:var(--acc);color:var(--onacc);border:0;border-radius:50px;padding:10px 22px;font-weight:600;display:inline-block}
+.btn.sm{padding:6px 16px;font-size:14px}
+.btn.ghost{background:none;color:var(--ink);border:2px solid var(--line)}
+
+section{padding:50px 0}
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center;min-height:70vh}
+.hero h1{font-size:clamp(40px,8vw,72px);margin-bottom:14px}
+.hero p{max-width:30em;margin-bottom:22px}
+.art{aspect-ratio:1;border-radius:32px;display:grid;place-items:center;font-size:clamp(70px,16vw,130px);background:conic-gradient(from 200deg,var(--acc),#f2b84b,var(--acc))}
+.art span{background:var(--card);border-radius:28px;padding:10px 24px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;display:grid;gap:6px;transition:transform .2s}
+.card:hover{transform:translateY(-4px)}
+.ph{background:var(--bg);border-radius:12px;display:grid;place-items:center;font-size:56px;height:120px}
+.card h3{font-size:16px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:6px}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.tools input{flex:1;min-width:180px;padding:10px 16px;border-radius:50px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.chip{background:none;border:1px solid var(--line);color:var(--ink);border-radius:50px;padding:6px 16px}
+.chip[aria-pressed=true]{background:var(--acc);color:var(--onacc);border-color:var(--acc)}
+
+.rev{background:var(--card);border-inline-start:4px solid var(--acc);border-radius:12px;padding:14px}
+dl{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;max-width:520px;margin-bottom:18px}
+dt{font-weight:600}
+
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:25}
+.cart{position:fixed;inset:0 auto 0 0;width:min(390px,100%);background:var(--card);z-index:30;padding:18px;overflow:auto;transform:translateX(-100%);transition:transform .25s}
+.cart.open{transform:none}
+.ci{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.q button{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--ink)}
+.cart input,.cart textarea{width:100%;margin-top:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+#st{min-height:26px;margin-top:8px;font-size:14px}
+.err{color:#d6336c}
+footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:var(--mute)}
+
+@media(max-width:700px){
+.hero{grid-template-columns:1fr;min-height:auto}
+.art{order:-1;max-width:260px;margin:auto}
+nav{order:3;width:100%;justify-content:space-around}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#home">خانه‌ساز</a>
+    <nav>
+      <a href="#home">خانه</a>
+      <a href="#products">محصولات</a>
+      <a href="#about">درباره‌ی ما</a>
+      <a href="#contact">تماس</a>
+    </nav>
+    <button class="ib" id="theme" aria-label="تغییر حالت تاریک و روشن">🌓</button>
+    <button class="ib" id="cartBtn" aria-label="باز کردن سبد خرید">🛒 <span id="count">۰</span></button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section data-page="home" class="hero">
+    <div>
+      <h1>لوازمی که سال‌ها کنار شما می‌ماند</h1>
+      <p class="mute">یخچال، لباسشویی، ظرفشویی و لوازم آشپزخانه با ضمانت و مشاوره‌ی صادقانه. انتخاب کنید، سفارش را در پیام‌رسان بفرستید، ما تماس می‌گیریم.</p>
+      <a class="btn" href="#products">دیدن محصولات</a>
+      <a class="btn ghost" href="#contact">تماس با ما</a>
+    </div>
+    <div class="art" aria-hidden="true"><span>🧊</span></div>
+  </section>
+
+  <section data-page="home">
+    <h2>پرفروش‌ها</h2>
+    <div class="grid" id="featured"></div>
+  </section>
+
+  <section data-page="home">
+    <h2>نظر مشتری‌ها <small class="mute" style="font-size:14px">(نمونه)</small></h2>
+    <div class="grid">
+      <div class="rev"><p>ظرفشویی را سر موعد تحویل دادند و توضیح‌ها کامل بود.</p><b>— مشتری نمونه ۱</b></div>
+      <div class="rev"><p>مشاوره‌شان بی‌طرفانه بود و گران‌ترین مدل را پیشنهاد نکردند.</p><b>— مشتری نمونه ۲</b></div>
+      <div class="rev"><p>ثبت سفارش خیلی ساده بود و همان روز تماس گرفتند.</p><b>— مشتری نمونه ۳</b></div>
+    </div>
+  </section>
+
+  <section data-page="products" hidden>
+    <h2>محصولات</h2>
+    <div class="tools">
+      <input id="q" type="search" placeholder="جستجوی محصول..." aria-label="جستجوی محصول">
+      <div id="chips" class="tools" style="margin:0"></div>
+    </div>
+    <div class="grid" id="list"></div>
+    <p id="none" class="mute" hidden>محصولی پیدا نشد.</p>
+  </section>
+
+  <section data-page="about" hidden>
+    <h2>درباره‌ی ما</h2>
+    <p style="max-width:34em">از سال ۱۳۹۰ در کنار خانواده‌ها هستیم. هر دستگاه را قبل از فروش بررسی می‌کنیم و دقیق می‌گوییم کدام مدل به درد شما می‌خورد؛ نه گران‌ترین، نه ارزان‌ترین، بلکه مناسب‌ترین.</p>
+  </section>
+
+  <section data-page="contact" hidden>
+    <h2>تماس با ما</h2>
+    <dl>
+      <dt>نشانی</dt><dd>[نشانی فروشگاه]</dd>
+      <dt>تلفن</dt><dd id="phoneShow"></dd>
+      <dt>ساعت کاری</dt><dd>شنبه تا پنجشنبه، ۹ تا ۲۱</dd>
+    </dl>
+    <a class="btn" id="mapLink" target="_blank" rel="noopener">مسیریابی روی نقشه</a>
+    <a class="btn ghost" id="chatLink" target="_blank" rel="noopener">گفت‌وگو در پیام‌رسان</a>
+  </section>
+
+</main>
+
+<footer>© خانه‌ساز (نمونه‌کار) · قیمت‌ها و نظرها نمونه‌اند</footer>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="cart" id="cart" aria-label="سبد خرید">
+  <div class="row"><h2 style="margin:0">سبد خرید</h2><button class="ib" id="closeCart" aria-label="بستن">✕</button></div>
+  <div id="items"></div>
+  <div class="row"><b>جمع کل</b><b id="total">۰ تومان</b></div>
+  <form id="order" novalidate>
+    <input id="oname" placeholder="نام شما" autocomplete="name">
+    <input id="otel" type="tel" inputmode="numeric" placeholder="شماره‌ی موبایل">
+    <button class="btn" style="width:100%;margin-top:10px" type="submit">ارسال سفارش به پیام‌رسان</button>
+    <p id="st" role="status" aria-live="polite"></p>
+    <textarea id="otext" rows="6" readonly hidden></textarea>
+  </form>
+</aside>
+
+<script>
+  // تنظیمات فروشگاه: این‌ها را با اطلاعات واقعی عوض کنید
+  const SHOP = {
+    phone: '۰۹۱۲۰۰۰۰۰۰۰',
+    chat: 'https://eitaa.com/USERNAME',
+    map: 'https://maps.google.com/?q=نشانی+فروشگاه'
+  };
+
+  const P = [
+    {id:1,n:'یخچال ساید بای ساید',c:'fridge',p:48000000,i:'🧊',d:'ظرفیت ۷۰۰ لیتر'},
+    {id:2,n:'فریزر صندوقی',c:'fridge',p:22000000,i:'❄️',d:'ظرفیت ۳۰۰ لیتر'},
+    {id:3,n:'لباسشویی ۹ کیلویی',c:'wash',p:25000000,i:'🧺',d:'دور ۱۴۰۰، کم‌مصرف'},
+    {id:4,n:'ظرفشویی ۱۴ نفره',c:'wash',p:32000000,i:'🍽️',d:'۸ برنامه‌ی شست‌وشو'},
+    {id:5,n:'ماکروفر ۳۰ لیتری',c:'kitchen',p:9500000,i:'📡',d:'گریل و دیجیتال'},
+    {id:6,n:'سرخ‌کن بدون روغن',c:'kitchen',p:6800000,i:'🍟',d:'ظرفیت ۵ لیتر'},
+    {id:7,n:'جاروبرقی ۲۲۰۰ وات',c:'clean',p:8900000,i:'🌀',d:'فیلتر هپا'},
+    {id:8,n:'جاروشارژی',c:'clean',p:12500000,i:'🔋',d:'۶۰ دقیقه کار'}
+  ];
+  const CATS = {all:'همه',fridge:'یخچال و فریزر',wash:'شست‌وشو',kitchen:'آشپزخانه',clean:'نظافت'};
+
+  const $ = s => document.querySelector(s);
+  const $$ = s => [...document.querySelectorAll(s)];
+  const fa = n => Number(n).toLocaleString('fa-IR');
+  const toEn = s => s.replace(/[۰-۹]/g, x => '۰۱۲۳۴۵۶۷۸۹'.indexOf(x));
+
+  /* ---------- صفحه‌ها (مسیریابی با hash) ---------- */
+  const PAGES = ['home','products','about','contact'];
+  function route() {
+    const h = location.hash.replace('#','');
+    const page = PAGES.includes(h) ? h : 'home';
+    $$('[data-page]').forEach(s => s.hidden = s.dataset.page !== page);
+    $$('nav a').forEach(a => a.removeAttribute('aria-current'));
+    const cur = $('nav a[href="#' + page + '"]');
+    if (cur) cur.setAttribute('aria-current','page');
+    window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange', route);
+
+  /* ---------- محصولات، جستجو و فیلتر ---------- */
+  const card = p => `<article class="card"><div class="ph" aria-hidden="true">${p.i}</div><h3>${p.n}</h3><p class="mute">${p.d}</p><div class="row"><b>${fa(p.p)} تومان</b><button class="btn sm" data-add="${p.id}">افزودن</button></div></article>`;
+  let cat = 'all';
+  function renderList() {
+    const q = $('#q').value.trim().toLowerCase();
+    const r = P.filter(p => (cat === 'all' || p.c === cat) && p.n.toLowerCase().includes(q));
+    $('#list').innerHTML = r.map(card).join('');
+    $('#none').hidden = r.length > 0;
+  }
+  $('#featured').innerHTML = P.slice(0,4).map(card).join('');
+  $('#chips').innerHTML = Object.entries(CATS).map(([k,v]) => `<button class="chip" data-cat="${k}" aria-pressed="${k==='all'}">${v}</button>`).join('');
+  $('#chips').addEventListener('click', e => {
+    const b = e.target.closest('[data-cat]'); if (!b) return;
+    cat = b.dataset.cat;
+    $$('.chip').forEach(c => c.setAttribute('aria-pressed', c === b));
+    renderList();
+  });
+  $('#q').addEventListener('input', renderList);
+
+  /* ---------- سبد خرید ---------- */
+  function load() { try { return JSON.parse(localStorage.getItem('cart')) || {}; } catch (e) { return {}; } }
+  let cart = load();
+  const save = () => { try { localStorage.setItem('cart', JSON.stringify(cart)); } catch (e) {} };
+
+  function lines() {
+    return Object.entries(cart).map(([id,q]) => ({p: P.find(x => x.id == id), q})).filter(x => x.p);
+  }
+  function renderCart() {
+    const ls = lines();
+    const total = ls.reduce((s,l) => s + l.p.p * l.q, 0);
+    $('#count').textContent = fa(ls.reduce((s,l) => s + l.q, 0));
+    $('#total').textContent = fa(total) + ' تومان';
+    $('#items').innerHTML = ls.length ? ls.map(l => `<div class="ci"><span>${l.p.n}<br><small class="mute">${fa(l.p.p)} تومان</small></span><span class="q"><button data-dec="${l.p.id}" aria-label="کم کردن">−</button> ${fa(l.q)} <button data-inc="${l.p.id}" aria-label="زیاد کردن">+</button></span></div>`).join('') : '<p class="mute" style="padding:12px 0">سبد خالی است.</p>';
+  }
+  function setQty(id, d) {
+    cart[id] = (cart[id] || 0) + d;
+    if (cart[id] <= 0) delete cart[id];
+    save(); renderCart();
+  }
+  document.addEventListener('click', e => {
+    const a = e.target.closest('[data-add]');
+    if (a) { setQty(a.dataset.add, 1); a.textContent = 'اضافه شد ✓'; setTimeout(() => a.textContent = 'افزودن', 900); return; }
+    const i = e.target.closest('[data-inc]'); if (i) return setQty(i.dataset.inc, 1);
+    const d = e.target.closest('[data-dec]'); if (d) return setQty(d.dataset.dec, -1);
+  });
+  const openCart = o => { $('#cart').classList.toggle('open', o); $('#scrim').hidden = !o; };
+  $('#cartBtn').onclick = () => openCart(true);
+  $('#closeCart').onclick = $('#scrim').onclick = () => openCart(false);
+
+  /* ---------- ارسال سفارش ---------- */
+  function say(t, err) { const s = $('#st'); s.textContent = t; s.className = err ? 'err' : ''; }
+  $('#order').addEventListener('submit', e => {
+    e.preventDefault();
+    const ls = lines();
+    const n = $('#oname').value.trim();
+    const t = toEn($('#otel').value.trim());
+    if (!ls.length) return say('سبد خرید خالی است.', true);
+    if (n.length < 2) return say('لطفاً نام خود را وارد کنید.', true);
+    if (!/^09\d{9}$/.test(t)) return say('شماره‌ی موبایل باید ۱۱ رقم باشد و با ۰۹ شروع شود.', true);
+    const total = ls.reduce((s,l) => s + l.p.p * l.q, 0);
+    const text = 'سفارش جدید\nنام: ' + n + '\nموبایل: ' + t + '\n' +
+      ls.map(l => '- ' + l.p.n + ' × ' + fa(l.q)).join('\n') + '\nجمع: ' + fa(total) + ' تومان';
+    if (navigator.clipboard) navigator.clipboard.writeText(text).catch(() => {});
+    $('#otext').value = text; $('#otext').hidden = false;
+    window.open(SHOP.chat, '_blank');
+    say('متن سفارش کپی شد. در چت باز شده آن را بچسبانید و ارسال کنید. اگر کپی نشد، متن زیر را بفرستید.');
+  });
+
+  /* ---------- حالت تاریک و روشن ---------- */
+  function setTheme(t) { document.documentElement.dataset.theme = t; try { localStorage.setItem('theme', t); } catch (e) {} }
+  let saved = null;
+  try { saved = localStorage.getItem('theme'); } catch (e) {}
+  setTheme(saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+  $('#theme').onclick = () => setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
+
+  /* ---------- شروع ---------- */
+  $('#phoneShow').textContent = SHOP.phone;
+  $('#mapLink').href = SHOP.map;
+  $('#chatLink').href = SHOP.chat;
+  renderList(); renderCart(); route();
+</script>
+
+</body>
+        </html>
